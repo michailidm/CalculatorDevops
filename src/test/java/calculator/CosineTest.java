@@ -30,5 +30,24 @@ class CosineTest {
 
     @Test
     void showOperationExpression() {
+        Cosine cosine = new Cosine(75);
+        String expectedResult = "cos(75)";
+        String result = cosine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        cosine = new Cosine(-75.57);
+        expectedResult = "cos(-75.57)";
+        result = cosine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        cosine = new Cosine(-0.0);
+        expectedResult = "cos(0)";
+        result = cosine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        cosine = new Cosine(0);
+        expectedResult = "cos(0)";
+        result = cosine.showOperationExpression();
+        assertEquals(expectedResult, result);
     }
 }

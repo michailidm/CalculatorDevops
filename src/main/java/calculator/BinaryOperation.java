@@ -4,8 +4,8 @@ package calculator;
  * The <code>BinaryOperation</code> class represents a binary operation.
  */
 abstract public class BinaryOperation extends Operation {
-    double firstOperand;
-    double secondOperand;
+    protected double firstOperand;
+    protected double secondOperand;
 
     public double getFirstOperand() {
         return firstOperand;

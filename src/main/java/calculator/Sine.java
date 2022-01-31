@@ -3,7 +3,7 @@ package calculator;
 /**
  * The <code>Sine</code> class represents the sine function.
  */
-public class Sine extends UnaryOperation {
+public class Sine extends TrigonometricOperation {
 
     public Sine() {
         this.name = "Sine";
@@ -20,7 +20,7 @@ public class Sine extends UnaryOperation {
     }
 
     public String showOperationExpression() {
-        return "sin(" + this.operand + ")";
+        return "sin(" + simplifyNumber(this.operand) + ")";
     }
 
 }

@@ -25,5 +25,24 @@ class DivisionTest {
 
     @Test
     void showOperationExpression() {
+        Division division = new Division(45, 75);
+        String expectedResult = "45 / 75";
+        String result = division.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        division = new Division(45, -75.3);
+        expectedResult = "45 / (-75.3)";
+        result = division.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        division = new Division(-45.5, 75);
+        expectedResult = "-45.5 / 75";
+        result = division.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        division = new Division(0, 0.0);
+        expectedResult = "0 / 0";
+        result = division.showOperationExpression();
+        assertEquals(expectedResult, result);
     }
 }

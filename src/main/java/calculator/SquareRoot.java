@@ -20,7 +20,7 @@ public class SquareRoot extends UnaryOperation {
     }
 
     public String showOperationExpression() {
-        return "√" + this.operand;
+        return "√" + (this.operand < 0? "(": "") + simplifyNumber(this.operand) + (this.operand < 0? ")": "");
     }
 
 }

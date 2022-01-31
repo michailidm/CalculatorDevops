@@ -30,5 +30,24 @@ class TangentTest {
 
     @Test
     void showOperationExpression() {
+        Tangent tangent = new Tangent(75);
+        String expectedResult = "tan(75)";
+        String result = tangent.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        tangent = new Tangent(-75.57);
+        expectedResult = "tan(-75.57)";
+        result = tangent.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        tangent = new Tangent(-0.0);
+        expectedResult = "tan(0)";
+        result = tangent.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        tangent = new Tangent(0);
+        expectedResult = "tan(0)";
+        result = tangent.showOperationExpression();
+        assertEquals(expectedResult, result);
     }
 }

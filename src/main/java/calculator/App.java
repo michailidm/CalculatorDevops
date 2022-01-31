@@ -5,7 +5,6 @@ public class App
     public static void main(String[] args)
     {
         Calculator calculator = new Calculator();
-        calculator.initialise();
 
         int choice;
         boolean validInput;
@@ -13,6 +12,7 @@ public class App
         System.out.println("Calculator");
 
         do {
+            // Choose an action
             choice = calculator.chooseAction();
 
             if (choice == 0) {
@@ -20,12 +20,17 @@ public class App
                 return;
             }
 
-            Scanner scan = new Scanner(System.in);
+            Operation chosenOperation = calculator.getOperations().get(choice - 1);
+            System.out.println(chosenOperation.getName());
+            Scanner scan = new Scanner(System.in).useLocale(Locale.US);
+
+            // Scan operand(s) of the chosen operation
 
             // BINARY OPERATIONS (+, -, *, /)
-            if (calculator.getOperations().get(choice - 1) instanceof BinaryOperation) {
+            if (chosenOperation instanceof BinaryOperation) {
                 System.out.println("Enter two numbers");
 
+                // first operand
                 validInput = false;
                 while (!validInput) {
                     try {
@@ -39,6 +44,7 @@ public class App
                     validInput = true;
                 }
 
+                // second operand
                 validInput = false;
                 while (!validInput) {
                     try {
@@ -54,11 +60,11 @@ public class App
             }
 
             // UNARY OPERATIONS (sin, cos, tan, sqrt, exp)
-            if (calculator.getOperations().get(choice - 1) instanceof UnaryOperation) {
+            if (chosenOperation instanceof UnaryOperation) {
                 validInput = false;
                 while (!validInput) {
                     try {
-                        System.out.print("Enter number" + ((choice == 5 || choice == 6 || choice == 7)? " (in radians)": "") + ": ");
+                        System.out.print("Enter number" + ((chosenOperation instanceof TrigonometricOperation)? " (in radians)": "") + ": ");
                         num1 = scan.nextDouble();
                     } catch (Exception e) {
                         System.out.println("Invalid number, please try again.");
@@ -69,34 +75,26 @@ public class App
                 }
             }
 
-            // Remove sign from zero
-
-            if (num1 == -0) {
-                num1 = 0;
-            }
-
-            if (num2 == -0) {
-                num2 = 0;
-            }
-
             // Set operand(s) to the chosen operation,
             // perform the operation and
             // print the results.
 
             double result;
-            Operation chosenOperation = calculator.getOperations().get(choice - 1);
+            chosenOperation = calculator.getOperations().get(choice - 1);
             if (chosenOperation instanceof UnaryOperation) {
                 ((UnaryOperation) chosenOperation).setOperand(num1);
 
                 result = chosenOperation.perform();
-                System.out.println(chosenOperation.showOperationExpression() + " = " + result);
+
+                System.out.println(chosenOperation.showOperationExpression() + " = " + chosenOperation.simplifyNumber(result));
 
             } else if (chosenOperation instanceof BinaryOperation) {
                 ((BinaryOperation) chosenOperation).setFirstOperand(num1);
                 ((BinaryOperation) chosenOperation).setSecondOperand(num2);
 
                 result = chosenOperation.perform();
-                System.out.println(chosenOperation.showOperationExpression() + " = " + result);
+
+                System.out.println(chosenOperation.showOperationExpression() + " = " + chosenOperation.simplifyNumber(result));
             }
 
         } while (choice != 0);

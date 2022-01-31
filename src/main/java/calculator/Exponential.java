@@ -20,7 +20,7 @@ public class Exponential extends UnaryOperation {
     }
 
     public String showOperationExpression() {
-        return "exp(" + this.operand + ")";
+        return "exp(" + simplifyNumber(this.operand) + ")";
     }
 
 }

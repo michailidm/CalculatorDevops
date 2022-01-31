@@ -1,5 +1,7 @@
 package calculator;
 
+import java.text.DecimalFormat;
+
 /**
  * The <code>Addition</code> class represents the operation of addition.
  */
@@ -21,7 +23,7 @@ public class Addition extends BinaryOperation {
     }
 
     public String showOperationExpression() {
-        return this.firstOperand + " + " + (this.secondOperand < 0? "(": "") + this.secondOperand + (this.secondOperand < 0? ")": "");
+        return simplifyNumber(this.firstOperand) + " + " + (this.secondOperand < 0? "(": "") + simplifyNumber(this.secondOperand) + (this.secondOperand < 0? ")": "");
     }
 
 }

@@ -21,7 +21,7 @@ public class Division extends BinaryOperation {
     }
 
     public String showOperationExpression() {
-        return this.firstOperand + " / " + (this.secondOperand < 0? "(": "") + this.secondOperand + (this.secondOperand < 0? ")": "");
+        return simplifyNumber(this.firstOperand) + " / " + (this.secondOperand < 0? "(": "") + simplifyNumber(this.secondOperand) + (this.secondOperand < 0? ")": "");
     }
 
 }

@@ -3,7 +3,7 @@ package calculator;
 /**
  * The <code>Cosine</code> class represents the cosine function.
  */
-public class Cosine extends UnaryOperation {
+public class Cosine extends TrigonometricOperation {
 
     public Cosine() {
         this.name = "Cosine";
@@ -20,7 +20,7 @@ public class Cosine extends UnaryOperation {
     }
 
     public String showOperationExpression() {
-        return "cos(" + this.operand + ")";
+        return "cos(" + simplifyNumber(this.operand) + ")";
     }
 
 }

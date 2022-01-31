@@ -30,5 +30,24 @@ class SineTest {
 
     @Test
     void showOperationExpression() {
+        Sine sine = new Sine(75);
+        String expectedResult = "sin(75)";
+        String result = sine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        sine = new Sine(-75.57);
+        expectedResult = "sin(-75.57)";
+        result = sine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        sine = new Sine(-0.0);
+        expectedResult = "sin(0)";
+        result = sine.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        sine = new Sine(0);
+        expectedResult = "sin(0)";
+        result = sine.showOperationExpression();
+        assertEquals(expectedResult, result);
     }
 }

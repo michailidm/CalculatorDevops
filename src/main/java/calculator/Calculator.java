@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,7 @@ public class Calculator {
 
     public Calculator() {
         this.operations = new ArrayList<>();
+        this.initialise();
     }
 
     public ArrayList<Operation> getOperations() {
@@ -19,7 +21,7 @@ public class Calculator {
 
     /**
      * Adds a new operation to the list of operations of the calculator.
-     * @param operation
+     * @param operation the operation to be added
      */
     public void addOperation(Operation operation) {
         this.operations.add(operation);
@@ -27,8 +29,20 @@ public class Calculator {
 
     /**
      * Initialises the calculator by adding all the operations the calculator can perform.
+     * Available operations are:
+     * <ul>
+     *     <li>Addition</li>
+     *     <li>Subtraction</li>
+     *     <li>Multiplication</li>
+     *     <li>Division</li>
+     *     <li>Sine</li>
+     *     <li>Cosine</li>
+     *     <li>Tangent</li>
+     *     <li>Square Root</li>
+     *     <li>Exponential</li>
+     * </ul>
      */
-    public void initialise() {
+    private void initialise() {
         Addition addition = new Addition();
         this.addOperation(addition);
 
@@ -65,7 +79,6 @@ public class Calculator {
         System.out.println("0 to Exit");
 
         Calculator calculator = new Calculator();
-        calculator.initialise();
         int i = 1;
         for (Operation operation : calculator.getOperations()) {
             System.out.println(i + " for " + operation.getName());
@@ -74,11 +87,11 @@ public class Calculator {
     }
 
     /**
-     * This function receives user input about which action to perform.
-     * @return the choice of the user (integer)
+     * This function receives user input (an integer >= 0) about which action to perform.
+     * @return the choice of the user (integer >= 0)
      */
     public int chooseAction() {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in).useLocale(Locale.US);
         int choice = -1;
         boolean validChoice = false;
 
@@ -96,7 +109,6 @@ public class Calculator {
             }
 
             Calculator calculator = new Calculator();
-            calculator.initialise();
 
             if (choice > calculator.getOperations().size() || choice < 0) {
                 System.out.println("Invalid choice, please try again.");

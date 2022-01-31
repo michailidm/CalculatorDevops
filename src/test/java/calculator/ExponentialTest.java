@@ -30,5 +30,25 @@ class ExponentialTest {
 
     @Test
     void showOperationExpression() {
+        Exponential exponential = new Exponential(75);
+        String expectedResult = "exp(75)";
+        String result = exponential.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        exponential = new Exponential(-75.57);
+        expectedResult = "exp(-75.57)";
+        result = exponential.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        exponential = new Exponential(-0.0);
+        expectedResult = "exp(0)";
+        result = exponential.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        exponential = new Exponential(0);
+        expectedResult = "exp(0)";
+        result = exponential.showOperationExpression();
+        assertEquals(expectedResult, result);
+
     }
 }

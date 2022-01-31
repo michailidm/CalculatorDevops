@@ -30,5 +30,25 @@ class SquareRootTest {
 
     @Test
     void showOperationExpression() {
+        SquareRoot squareRoot = new SquareRoot(75);
+        String expectedResult = "√75";
+        String result = squareRoot.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        squareRoot = new SquareRoot(-75.57);
+        expectedResult = "√(-75.57)";
+        result = squareRoot.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        squareRoot = new SquareRoot(-0.0);
+        expectedResult = "√0";
+        result = squareRoot.showOperationExpression();
+        assertEquals(expectedResult, result);
+
+        squareRoot = new SquareRoot(0);
+        expectedResult = "√0";
+        result = squareRoot.showOperationExpression();
+        assertEquals(expectedResult, result);
+
     }
 }

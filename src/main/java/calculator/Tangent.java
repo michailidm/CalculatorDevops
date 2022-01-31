@@ -3,7 +3,7 @@ package calculator;
 /**
  * The <code>Tangent</code> class represents the tangent function.
  */
-public class Tangent extends UnaryOperation {
+public class Tangent extends TrigonometricOperation {
 
     public Tangent() {
         this.name = "Tangent";
@@ -20,7 +20,7 @@ public class Tangent extends UnaryOperation {
     }
 
     public String showOperationExpression() {
-        return "tan(" + this.operand + ")";
+        return "tan(" + simplifyNumber(this.operand) + ")";
     }
 
 }

@@ -25,5 +25,24 @@ class SubtractionTest {
 
     @Test
     void showOperationExpression() {
+        Subtraction subtraction = new Subtraction(45, 75);
+        String expectedResult = "45 - 75";
+        String result = subtraction.showOperationExpression();
+        Assertions.assertEquals(expectedResult, result);
+
+        subtraction = new Subtraction(45, -75.3);
+        expectedResult = "45 - (-75.3)";
+        result = subtraction.showOperationExpression();
+        Assertions.assertEquals(expectedResult, result);
+
+        subtraction = new Subtraction(-45.5, 75);
+        expectedResult = "-45.5 - 75";
+        result = subtraction.showOperationExpression();
+        Assertions.assertEquals(expectedResult, result);
+
+        subtraction = new Subtraction(0, 0.0);
+        expectedResult = "0 - 0";
+        result = subtraction.showOperationExpression();
+        Assertions.assertEquals(expectedResult, result);
     }
 }
