@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +30,22 @@ class ExponentialTest {
     void showOperationExpression() {
         Exponential exponential = new Exponential(75);
         String expectedResult = "exp(75)";
-        String result = exponential.showOperationExpression();
+        String result = exponential.showExpression();
         assertEquals(expectedResult, result);
 
         exponential = new Exponential(-75.57);
         expectedResult = "exp(-75.57)";
-        result = exponential.showOperationExpression();
+        result = exponential.showExpression();
         assertEquals(expectedResult, result);
 
         exponential = new Exponential(-0.0);
         expectedResult = "exp(0)";
-        result = exponential.showOperationExpression();
+        result = exponential.showExpression();
         assertEquals(expectedResult, result);
 
         exponential = new Exponential(0);
         expectedResult = "exp(0)";
-        result = exponential.showOperationExpression();
+        result = exponential.showExpression();
         assertEquals(expectedResult, result);
 
     }

@@ -19,7 +19,7 @@ public class Sine extends TrigonometricOperation {
         return Math.sin(this.operand);
     }
 
-    public String showOperationExpression() {
+    public String showExpression() {
         return "sin(" + simplifyNumber(this.operand) + ")";
     }
 

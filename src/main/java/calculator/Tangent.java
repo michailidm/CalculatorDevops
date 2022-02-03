@@ -19,7 +19,7 @@ public class Tangent extends TrigonometricOperation {
         return Math.tan(this.operand);
     }
 
-    public String showOperationExpression() {
+    public String showExpression() {
         return "tan(" + simplifyNumber(this.operand) + ")";
     }
 

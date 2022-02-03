@@ -16,14 +16,14 @@ abstract public class Operation {
     }
 
     /**
-     * Shows the numeric expression containing the operation.
+     * Shows the numeric expression produced by the operation.
      * Something like <code>toString()</code>.
      * For example, if the operation is addition, the function will print
-     * <code>first operand + second operand</code>
+     * <code>first_operand + second_operand</code>
      * Another example: if the operation is sine, the function will print
      * <code>sin(operand)</code>
      */
-    abstract public String showOperationExpression();
+    abstract public String showExpression();
 
     /** Performs the operation.
      * @return the result of the operation

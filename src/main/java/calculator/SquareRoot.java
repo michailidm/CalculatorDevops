@@ -19,7 +19,7 @@ public class SquareRoot extends UnaryOperation {
         return Math.sqrt(this.operand);
     }
 
-    public String showOperationExpression() {
+    public String showExpression() {
         return "√" + (this.operand < 0? "(": "") + simplifyNumber(this.operand) + (this.operand < 0? ")": "");
     }
 

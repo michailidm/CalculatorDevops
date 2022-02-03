@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +30,22 @@ class SquareRootTest {
     void showOperationExpression() {
         SquareRoot squareRoot = new SquareRoot(75);
         String expectedResult = "√75";
-        String result = squareRoot.showOperationExpression();
+        String result = squareRoot.showExpression();
         assertEquals(expectedResult, result);
 
         squareRoot = new SquareRoot(-75.57);
         expectedResult = "√(-75.57)";
-        result = squareRoot.showOperationExpression();
+        result = squareRoot.showExpression();
         assertEquals(expectedResult, result);
 
         squareRoot = new SquareRoot(-0.0);
         expectedResult = "√0";
-        result = squareRoot.showOperationExpression();
+        result = squareRoot.showExpression();
         assertEquals(expectedResult, result);
 
         squareRoot = new SquareRoot(0);
         expectedResult = "√0";
-        result = squareRoot.showOperationExpression();
+        result = squareRoot.showExpression();
         assertEquals(expectedResult, result);
 
     }

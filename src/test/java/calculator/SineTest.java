@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +30,22 @@ class SineTest {
     void showOperationExpression() {
         Sine sine = new Sine(75);
         String expectedResult = "sin(75)";
-        String result = sine.showOperationExpression();
+        String result = sine.showExpression();
         assertEquals(expectedResult, result);
 
         sine = new Sine(-75.57);
         expectedResult = "sin(-75.57)";
-        result = sine.showOperationExpression();
+        result = sine.showExpression();
         assertEquals(expectedResult, result);
 
         sine = new Sine(-0.0);
         expectedResult = "sin(0)";
-        result = sine.showOperationExpression();
+        result = sine.showExpression();
         assertEquals(expectedResult, result);
 
         sine = new Sine(0);
         expectedResult = "sin(0)";
-        result = sine.showOperationExpression();
+        result = sine.showExpression();
         assertEquals(expectedResult, result);
     }
 }

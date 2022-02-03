@@ -28,22 +28,22 @@ class AdditionTest {
     void showOperationExpression() {
         Addition addition = new Addition(45, 75);
         String expectedResult = "45 + 75";
-        String result = addition.showOperationExpression();
+        String result = addition.showExpression();
         assertEquals(expectedResult, result);
 
         addition = new Addition(45, -75.3);
         expectedResult = "45 + (-75.3)";
-        result = addition.showOperationExpression();
+        result = addition.showExpression();
         assertEquals(expectedResult, result);
 
         addition = new Addition(-45.5, 75);
         expectedResult = "-45.5 + 75";
-        result = addition.showOperationExpression();
+        result = addition.showExpression();
         assertEquals(expectedResult, result);
 
         addition = new Addition(0, 0.0);
         expectedResult = "0 + 0";
-        result = addition.showOperationExpression();
+        result = addition.showExpression();
         assertEquals(expectedResult, result);
 
     }

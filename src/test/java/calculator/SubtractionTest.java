@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
 class SubtractionTest {
 
@@ -27,22 +26,22 @@ class SubtractionTest {
     void showOperationExpression() {
         Subtraction subtraction = new Subtraction(45, 75);
         String expectedResult = "45 - 75";
-        String result = subtraction.showOperationExpression();
+        String result = subtraction.showExpression();
         Assertions.assertEquals(expectedResult, result);
 
         subtraction = new Subtraction(45, -75.3);
         expectedResult = "45 - (-75.3)";
-        result = subtraction.showOperationExpression();
+        result = subtraction.showExpression();
         Assertions.assertEquals(expectedResult, result);
 
         subtraction = new Subtraction(-45.5, 75);
         expectedResult = "-45.5 - 75";
-        result = subtraction.showOperationExpression();
+        result = subtraction.showExpression();
         Assertions.assertEquals(expectedResult, result);
 
         subtraction = new Subtraction(0, 0.0);
         expectedResult = "0 - 0";
-        result = subtraction.showOperationExpression();
+        result = subtraction.showExpression();
         Assertions.assertEquals(expectedResult, result);
     }
 }

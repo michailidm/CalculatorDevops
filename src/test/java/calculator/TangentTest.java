@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +30,22 @@ class TangentTest {
     void showOperationExpression() {
         Tangent tangent = new Tangent(75);
         String expectedResult = "tan(75)";
-        String result = tangent.showOperationExpression();
+        String result = tangent.showExpression();
         assertEquals(expectedResult, result);
 
         tangent = new Tangent(-75.57);
         expectedResult = "tan(-75.57)";
-        result = tangent.showOperationExpression();
+        result = tangent.showExpression();
         assertEquals(expectedResult, result);
 
         tangent = new Tangent(-0.0);
         expectedResult = "tan(0)";
-        result = tangent.showOperationExpression();
+        result = tangent.showExpression();
         assertEquals(expectedResult, result);
 
         tangent = new Tangent(0);
         expectedResult = "tan(0)";
-        result = tangent.showOperationExpression();
+        result = tangent.showExpression();
         assertEquals(expectedResult, result);
     }
 }

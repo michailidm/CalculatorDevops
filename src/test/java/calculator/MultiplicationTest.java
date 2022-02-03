@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,22 +25,22 @@ class MultiplicationTest {
     void showOperationExpression() {
         Multiplication multiplication = new Multiplication(45, 75);
         String expectedResult = "45 * 75";
-        String result = multiplication.showOperationExpression();
+        String result = multiplication.showExpression();
         assertEquals(expectedResult, result);
 
         multiplication = new Multiplication(45, -75.3);
         expectedResult = "45 * (-75.3)";
-        result = multiplication.showOperationExpression();
+        result = multiplication.showExpression();
         assertEquals(expectedResult, result);
 
         multiplication = new Multiplication(-45.5, 75);
         expectedResult = "-45.5 * 75";
-        result = multiplication.showOperationExpression();
+        result = multiplication.showExpression();
         assertEquals(expectedResult, result);
 
         multiplication = new Multiplication(0, 0.0);
         expectedResult = "0 * 0";
-        result = multiplication.showOperationExpression();
+        result = multiplication.showExpression();
         assertEquals(expectedResult, result);
     }
 }

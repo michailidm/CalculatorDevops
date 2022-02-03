@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +30,22 @@ class CosineTest {
     void showOperationExpression() {
         Cosine cosine = new Cosine(75);
         String expectedResult = "cos(75)";
-        String result = cosine.showOperationExpression();
+        String result = cosine.showExpression();
         assertEquals(expectedResult, result);
 
         cosine = new Cosine(-75.57);
         expectedResult = "cos(-75.57)";
-        result = cosine.showOperationExpression();
+        result = cosine.showExpression();
         assertEquals(expectedResult, result);
 
         cosine = new Cosine(-0.0);
         expectedResult = "cos(0)";
-        result = cosine.showOperationExpression();
+        result = cosine.showExpression();
         assertEquals(expectedResult, result);
 
         cosine = new Cosine(0);
         expectedResult = "cos(0)";
-        result = cosine.showOperationExpression();
+        result = cosine.showExpression();
         assertEquals(expectedResult, result);
     }
 }

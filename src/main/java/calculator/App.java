@@ -86,7 +86,7 @@ public class App
 
                 result = chosenOperation.perform();
 
-                System.out.println(chosenOperation.showOperationExpression() + " = " + chosenOperation.simplifyNumber(result));
+                System.out.println(chosenOperation.showExpression() + " = " + chosenOperation.simplifyNumber(result));
 
             } else if (chosenOperation instanceof BinaryOperation) {
                 ((BinaryOperation) chosenOperation).setFirstOperand(num1);
@@ -94,7 +94,7 @@ public class App
 
                 result = chosenOperation.perform();
 
-                System.out.println(chosenOperation.showOperationExpression() + " = " + chosenOperation.simplifyNumber(result));
+                System.out.println(chosenOperation.showExpression() + " = " + chosenOperation.simplifyNumber(result));
             }
 
         } while (choice != 0);

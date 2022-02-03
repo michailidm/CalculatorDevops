@@ -19,7 +19,7 @@ public class Cosine extends TrigonometricOperation {
         return Math.cos(this.operand);
     }
 
-    public String showOperationExpression() {
+    public String showExpression() {
         return "cos(" + simplifyNumber(this.operand) + ")";
     }
 

@@ -1,7 +1,5 @@
 package calculator;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,22 +25,22 @@ class DivisionTest {
     void showOperationExpression() {
         Division division = new Division(45, 75);
         String expectedResult = "45 / 75";
-        String result = division.showOperationExpression();
+        String result = division.showExpression();
         assertEquals(expectedResult, result);
 
         division = new Division(45, -75.3);
         expectedResult = "45 / (-75.3)";
-        result = division.showOperationExpression();
+        result = division.showExpression();
         assertEquals(expectedResult, result);
 
         division = new Division(-45.5, 75);
         expectedResult = "-45.5 / 75";
-        result = division.showOperationExpression();
+        result = division.showExpression();
         assertEquals(expectedResult, result);
 
         division = new Division(0, 0.0);
         expectedResult = "0 / 0";
-        result = division.showOperationExpression();
+        result = division.showExpression();
         assertEquals(expectedResult, result);
     }
 }
