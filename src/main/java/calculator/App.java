@@ -1,20 +1,69 @@
 package calculator;
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
-public class App
+public class App extends JFrame
 {
+    static JFrame frame;
+    static JTextField textField;
+    String operator, operand1, operand2;
+
     public static void main(String[] args)
     {
-        Calculator calculator = new Calculator();
+        frame = new JFrame("calculator");
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
 
+        textField = new JTextField(16);
+        textField.setEditable(false);
+
+        // create number buttons
+        JButton[] numButtons = new JButton[10];
+        for (int i = 0; i < 10; i++) {
+            numButtons[i] = new JButton(String.valueOf(i));
+        }
+
+        JButton additionButton, subtractionButton, multiplicationButton, divisionButton,
+                equalityButton, eraseButton, decimalPointButton;
+
+        additionButton = new JButton("+");
+        subtractionButton = new JButton("-");
+        multiplicationButton = new JButton("*");
+        divisionButton = new JButton("/");
+        equalityButton = new JButton("=");
+        eraseButton = new JButton("C");
+        decimalPointButton = new JButton(".");
+
+        JPanel panel = new JPanel();
+        panel.add(textField);
+        for (int i = 0; i < 10; i++) {
+            panel.add(numButtons[i]);
+        }
+        panel.add(additionButton);
+        panel.add(subtractionButton);
+        panel.add(multiplicationButton);
+        panel.add(divisionButton);
+        panel.add(equalityButton);
+        panel.add(eraseButton);
+        panel.add(decimalPointButton);
+
+        panel.setBackground(Color.white);
+        frame.add(panel);
+        frame.setSize(300, 400);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        Calculator calculator = new Calculator();
         int choice;
         boolean validInput;
         double num1 = 0, num2 = 0;
         System.out.println("Calculator");
-
         do {
             // Choose an action
             choice = calculator.chooseAction();
-
             if (choice == 0) {
                 System.out.println("Exiting, Bye");
                 return;
@@ -29,7 +78,6 @@ public class App
             // BINARY OPERATIONS (+, -, *, /)
             if (chosenOperation instanceof BinaryOperation) {
                 System.out.println("Enter two numbers");
-
                 // first operand
                 validInput = false;
                 while (!validInput) {
@@ -78,7 +126,6 @@ public class App
             // Set operand(s) to the chosen operation,
             // perform the operation and
             // print the results.
-
             double result;
             chosenOperation = calculator.getOperations().get(choice - 1);
             if (chosenOperation instanceof UnaryOperation) {
@@ -98,7 +145,5 @@ public class App
             }
 
         } while (choice != 0);
-
     }
-
 }

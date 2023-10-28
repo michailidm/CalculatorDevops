@@ -1,5 +1,7 @@
 package calculator;
 
+import javax.swing.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -108,9 +110,7 @@ public class Calculator {
                 continue;
             }
 
-            Calculator calculator = new Calculator();
-
-            if (choice > calculator.getOperations().size() || choice < 0) {
+            if (choice > this.getOperations().size() || choice < 0) {
                 System.out.println("Invalid choice, please try again.");
                 scan.nextLine();
                 continue;
