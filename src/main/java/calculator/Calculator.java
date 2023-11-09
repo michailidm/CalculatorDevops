@@ -1,7 +1,5 @@
 package calculator;
 
-import javax.swing.*;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
@@ -10,7 +8,7 @@ import java.util.Scanner;
  * The <code>Calculator</code> class represents a calculator.
  */
 public class Calculator {
-    private ArrayList<Operation> operations;
+    private final ArrayList<Operation> operations;
 
     public Calculator() {
         this.operations = new ArrayList<>();
