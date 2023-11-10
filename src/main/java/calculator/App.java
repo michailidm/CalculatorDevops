@@ -31,9 +31,9 @@ public class App implements ActionListener
         frame.setSize(300, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //GridLayout gridLayout = new GridLayout(4, 5);
-
         //frame.setLayout(gridLayout);
 
+        // create the textfield for the output
         textField = new JTextField(16);
         textField.setEditable(false);
 
@@ -78,6 +78,7 @@ public class App implements ActionListener
         }
 
         frame.add(panel);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -186,7 +187,12 @@ public class App implements ActionListener
 
         for (JButton button : numButtons) {
             if (source == button) {
-                textField.setText(textField.getText() + button.getText());
+                // if there is already 0 in the textfield, replace it with the number on the button
+                if (Objects.equals(textField.getText(), "0")) {
+                    textField.setText(button.getText());
+                } else {
+                    textField.setText(textField.getText() + button.getText());
+                }
                 break;
             }
         }
@@ -233,6 +239,23 @@ public class App implements ActionListener
                     throw new IllegalStateException("Unexpected value: " + operator);
             }
             textField.setText(String.valueOf(result));
+        }
+
+        // if decimal point button was pressed and there is no other decimal point in the textfield
+        if (source == decimalPointButton && !textField.getText().contains(".")) {
+            textField.setText(textField.getText() + ".");
+        }
+
+        // if "delete" button was pressed and textfield is not empty
+        if (source == delButton && !Objects.equals(textField.getText(), "")) {
+            textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
+        }
+
+        if (source == clrButton) {
+            operand1 = 0;
+            operand2 = 0;
+            operator = 0;
+            textField.setText("");
         }
     }
 }
