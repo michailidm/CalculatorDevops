@@ -10,12 +10,13 @@ public class App implements ActionListener
 {
     JFrame frame;
     JTextField textField;
-    Calculator calculator = new Calculator();
+    //Calculator calculator = new Calculator();
     JButton[] numButtons = new JButton[10];
     JButton[] functionButtons = new JButton[8];
     JButton additionButton, subtractionButton, multiplicationButton, divisionButton;
     JButton equalityButton, decimalPointButton, clrButton, delButton;
-    JPanel panel;
+    JPanel mainPanel, textFieldPanel, buttonPanel;
+    boolean operationCompleted = false;
 
     double operand1 = 0, operand2 = 0, result = 0;
     char operator;
@@ -30,23 +31,32 @@ public class App implements ActionListener
 
         frame.setSize(300, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //GridLayout gridLayout = new GridLayout(4, 5);
-        //frame.setLayout(gridLayout);
+        GridLayout buttonPanelLayout = new GridLayout(6, 3);
 
         // create the textfield for the output
-        textField = new JTextField(16);
+        textField = new JTextField(15);
         textField.setEditable(false);
+        textField.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        // create the panel
-        panel = new JPanel();
-        panel.setBackground(Color.white);
-        panel.add(textField);
+        // create the main mainPanel
+        mainPanel = new JPanel();
+        mainPanel.setBackground(Color.white);
+        GridLayout mainPanelLayout = new GridLayout(2, 1);
+        mainPanel.setLayout(mainPanelLayout);
 
+        // create the textfield panel
+        textFieldPanel = new JPanel();
+        textFieldPanel.setBackground(Color.white);
+        textFieldPanel.add(textField);
 
-        // create number buttons and add them to the panel
+        // create the button panel
+        buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.white);
+        buttonPanel.setLayout(buttonPanelLayout);
+
+        // create number buttons
         for (int i = 0; i < 10; i++) {
             JButton button = new JButton(String.valueOf(i));
-            button.addActionListener(this);
             numButtons[i] = button;
         }
 
@@ -69,15 +79,19 @@ public class App implements ActionListener
         functionButtons[7] = delButton;
 
         for (JButton numButton : numButtons) {
-            panel.add(numButton);
+            numButton.addActionListener(this);
+            buttonPanel.add(numButton);
         }
 
         for (JButton functionButton : functionButtons) {
             functionButton.addActionListener(this);
-            panel.add(functionButton);
+            buttonPanel.add(functionButton);
         }
 
-        frame.add(panel);
+        mainPanel.add(textFieldPanel);
+        mainPanel.add(buttonPanel);
+
+        frame.add(mainPanel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
@@ -186,14 +200,18 @@ public class App implements ActionListener
         Object source = e.getSource();
 
         for (JButton button : numButtons) {
-            if (source == button) {
+            if (source == button && !operationCompleted) {
                 // if there is already 0 in the textfield, replace it with the number on the button
                 if (Objects.equals(textField.getText(), "0")) {
                     textField.setText(button.getText());
                 } else {
                     textField.setText(textField.getText() + button.getText());
                 }
+                operationCompleted = false;
                 break;
+            } else if (source == button){
+                textField.setText(button.getText());
+                operationCompleted = false;
             }
         }
 
@@ -218,37 +236,45 @@ public class App implements ActionListener
         if (source == equalityButton) {
             operand2 = Double.parseDouble(textField.getText());
             double result;
+            String resultString = null;
             switch (operator) {
                 case '+':
                     Addition addition = new Addition(operand1, operand2);
                     result = addition.perform();
+                    resultString = addition.simplifyNumber(result);
                     break;
                 case '-':
                     Subtraction subtraction = new Subtraction(operand1, operand2);
                     result = subtraction.perform();
+                    resultString = subtraction.simplifyNumber(result);
                     break;
                 case '*':
                     Multiplication multiplication = new Multiplication(operand1, operand2);
                     result = multiplication.perform();
+                    resultString = multiplication.simplifyNumber(result);
                     break;
                 case '/':
                     Division division = new Division(operand1, operand2);
                     result = division.perform();
+                    resultString = division.simplifyNumber(result);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + operator);
             }
-            textField.setText(String.valueOf(result));
+            textField.setText(resultString);
+            operationCompleted = true;
         }
 
         // if decimal point button was pressed and there is no other decimal point in the textfield
         if (source == decimalPointButton && !textField.getText().contains(".")) {
             textField.setText(textField.getText() + ".");
+            operationCompleted = false;
         }
 
         // if "delete" button was pressed and textfield is not empty
         if (source == delButton && !Objects.equals(textField.getText(), "")) {
             textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
+            operationCompleted = false;
         }
 
         if (source == clrButton) {
@@ -256,6 +282,7 @@ public class App implements ActionListener
             operand2 = 0;
             operator = 0;
             textField.setText("");
+            operationCompleted = false;
         }
     }
 }
